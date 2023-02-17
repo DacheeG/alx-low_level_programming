@@ -10,17 +10,14 @@ int main(void)
 char c = 'a';
 while (c <= 'z')
 {
-if (c != 'e' && c != 'q')
-{
 putchar(c);
-}
 c++;
 }
-Char C = 'A';
-while (C <= 'Z')
+Char c = 'A';
+while (c <= 'Z')
 {
-putchar(C);
-C++;
+putchar(c);
+c++;
 }
 putchar('\n');
 return (0);
