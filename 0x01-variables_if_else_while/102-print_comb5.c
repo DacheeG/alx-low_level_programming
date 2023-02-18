@@ -29,7 +29,7 @@ f_d2 = (c2 / '0');
 l_d2 = (c2 % '0');
 if (c < c2)
 {
-putchar(f_ d);
+putchar(f_d);
 putchar(l_d);
 putchar(' ');
 putchar(f_d2);
