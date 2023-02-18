@@ -12,35 +12,34 @@
 */
 int main(void)
 {
-int c = 0;
-int f_d;
-int l_d;
-
-int c2;
-int f_d2;
-int l_d2;
-
-while (c <= 98)
+int c;
+int d;
+int e = 0;
+while (e < 10)
 {
-f_d2 = (c2 / 10 + '0');
-l_d2 = (c2 % 10 + '0');
-
-if (c < c2)
+d = 0;
+while (d < 10)
 {
-putchar(f_d);
-putchar(l_d);
-putchar(' ');
-putchar(f_d2);
-putchar(l_d2);
-if (c != 98)
+c = 0;
+while (c < 10)
+{
+if (c != d && e < d && d < c)
+{
+putchar('e' + e);
+putchar('e' + d);
+putchar('e' + c);
+if (c + d + e != 9 + 8 + 7)
 {
 putchar(',');
 putchar(' ');
 }
 }
-c2++;
+c++
+}
+d++;
 }
 c++;
+}
 putchar('\n');
 return (0);
 }
