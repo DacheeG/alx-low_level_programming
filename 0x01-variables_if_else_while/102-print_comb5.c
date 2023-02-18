@@ -15,7 +15,6 @@ int main(void)
 int c = 0;
 int f_d;
 int l_d;
-
 int c2;
 int f_d2;
 int l_d2;
