@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  * main - print _Entry point
- * is written by mbah
+ * is written by DacheeG
  * Return: Always 0 (Success)
  */
 int main(void)
