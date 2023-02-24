@@ -12,7 +12,7 @@ int main(void)
 
 	while (k + j < 4000000)
 	{
-		k += k;
+		k += j;
 		j = k - j;
 		++i;
 	}
