@@ -37,11 +37,11 @@ int main(void)
 			printf(", ");
 		fib1_half1 = fib2_half2;
 		fib1_half2 = fib2_half2;
-		fib2_half2 + half1;
+		fib2_half2 = half1;
 		fib2_half2 = half2;
 	}
 	printf("\n");
-	Return (0);
+	return(0);
 
 
 
