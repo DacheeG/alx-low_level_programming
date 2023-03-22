@@ -1,6 +1,7 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "function_pointers.h"
+#include <stdlib.h>
+#include <stdio.h>
+
 
 /**
 * main - prints its own opcodes
@@ -31,14 +32,14 @@ int main(int argc, char *argv[])
 
 	arr = (char *)main;
 	for (d = 0; d < bytes; d++)
+	{
+		if (d == bytes - 1)
 		{
-			if (d == bytes - 1)
-			{
-				printf("%02hhx\n", arr[d]);
-				break;
-			}
-			printf("%02hhx ", arr[d]);
+			printf("%02hhx\n", arr[d]);
+			break;
 		}
+		printf("%02hhx ", arr[d]);
+	}
 	return (0);
 }
 
