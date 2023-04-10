@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 char *create_buffer(char *file);
-void close_file(int dg);
+void close_file(int fd);
 
 /**
  * create_buffer - Allocates 1024 bytes for a buffer.
@@ -19,7 +19,7 @@ char *create_buffer(char *file)
 
 	if (buffer == NULL)
 	{
-		gprintd(STDERR_FILENO,
+		dprintf(STDERR_FILENO,
 			"Error: Can't write to %s\n", file);
 		exit(99);
 	}
@@ -29,17 +29,17 @@ char *create_buffer(char *file)
 
 /**
  * close_file - Closes file descriptors.
- * @dg: The file descriptor to be closed.
+ * @fd: The file descriptor to be closed.
  */
-void close_file(int dg)
+void close_file(int fd)
 {
-	int s;
+	int c;
 
-	s = close(dg);
+	c = close(fd);
 
-	if (s == -1)
+	if (c == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close dg %d\n", dg);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 		exit(100);
 	}
 }
@@ -58,7 +58,7 @@ void close_file(int dg)
  */
 int main(int argc, char *argv[])
 {
-	int from, to, c, w;
+	int from, to, r, w;
 	char *buffer;
 
 	if (argc != 3)
@@ -69,11 +69,11 @@ int main(int argc, char *argv[])
 
 	buffer = create_buffer(argv[2]);
 	from = open(argv[1], O_RDONLY);
-	c = read(from, buffer, 1024);
+	r = read(from, buffer, 1024);
 	to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 
 	do {
-		if (from == -1 || c == -1)
+		if (from == -1 || r == -1)
 		{
 			dprintf(STDERR_FILENO,
 				"Error: Can't read from file %s\n", argv[1]);
@@ -81,7 +81,7 @@ int main(int argc, char *argv[])
 			exit(98);
 		}
 
-		w = write(to, buffer, c);
+		w = write(to, buffer, r);
 		if (to == -1 || w == -1)
 		{
 			dprintf(STDERR_FILENO,
@@ -90,10 +90,10 @@ int main(int argc, char *argv[])
 			exit(99);
 		}
 
-		c = read(from, buffer, 1024);
+		r = read(from, buffer, 1024);
 		to = open(argv[2], O_WRONLY | O_APPEND);
 
-	} while (c > 0);
+	} while (r > 0);
 
 	free(buffer);
 	close_file(from);
